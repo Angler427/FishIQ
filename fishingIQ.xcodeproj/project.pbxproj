@@ -6,6 +6,10 @@
 	objectVersion = 90;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5E25254A30ACCD54004B48C5 /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = 5E25254930ACCD54004B48C5 /* MapLibre */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		000000000000000000000120 /* fishingIQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fishingIQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -15,16 +19,28 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				MapTilerConfig.swift,
 			);
 			target = 000000000000000100000000 /* fishingIQ */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		5E25254D30ACCE93004B48C5 /* Exceptions for "fishingIQ" folder in "Copy Bundle Resources" phase from "fishingIQ" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 000000000000000140000000 /* Resources */;
+			membershipExceptions = (
+				MapTilerConfig.swift,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		000000000000000000000010 /* fishingIQ */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				5E768B0A309A843E00E5729E /* Exceptions for "fishingIQ" folder in "fishingIQ" target */,
+				5E25254D30ACCE93004B48C5 /* Exceptions for "fishingIQ" folder in "Copy Bundle Resources" phase from "fishingIQ" target */,
 			);
 			path = fishingIQ;
 			sourceTree = "<group>";
@@ -35,6 +51,7 @@
 		000000000000000130000000 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				5E25254A30ACCD54004B48C5 /* MapLibre in Frameworks */,
 			);
 		};
 /* End PBXFrameworksBuildPhase section */
@@ -73,6 +90,9 @@
 				000000000000000000000010 /* fishingIQ */,
 			);
 			name = fishingIQ;
+			packageProductDependencies = (
+				5E25254930ACCD54004B48C5 /* MapLibre */,
+			);
 			productName = MyApp;
 			productReference = 000000000000000000000120 /* fishingIQ.app */;
 			productType = "com.apple.product-type.application";
@@ -101,6 +121,9 @@
 			);
 			mainGroup = 000000000000000000000001;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5E25254830ACCD54004B48C5 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */,
+			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = 000000000000000000000020 /* Products */;
 			projectDirPath = "";
@@ -382,6 +405,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5E25254830ACCD54004B48C5 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maplibre/maplibre-gl-native-distribution";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5E25254930ACCD54004B48C5 /* MapLibre */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E25254830ACCD54004B48C5 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */;
+			productName = MapLibre;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 000000000000000000000000 /* Project object */;
 }
