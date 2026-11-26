@@ -70,7 +70,7 @@ struct FishIQMapView: UIViewRepresentable {
     ) {
         let wantedIDs = Set(annotations.map(\.id))
 
-        let existing = mapView.annotations.compactMap {
+        let existing = (mapView.annotations ?? []).compactMap {
             $0 as? MLNPointAnnotation
         }
 
