@@ -23,6 +23,3 @@ enum MapTilerConfig {
         return components.url!
     }
 }
-
-Key	Description	Action
-2hwY20nnpK0d3pIN7NH3

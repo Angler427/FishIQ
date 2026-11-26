@@ -19,28 +19,16 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
-				MapTilerConfig.swift,
 			);
 			target = 000000000000000100000000 /* fishingIQ */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		5E25254D30ACCE93004B48C5 /* Exceptions for "fishingIQ" folder in "Copy Bundle Resources" phase from "fishingIQ" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 000000000000000140000000 /* Resources */;
-			membershipExceptions = (
-				MapTilerConfig.swift,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		000000000000000000000010 /* fishingIQ */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				5E768B0A309A843E00E5729E /* Exceptions for "fishingIQ" folder in "fishingIQ" target */,
-				5E25254D30ACCE93004B48C5 /* Exceptions for "fishingIQ" folder in "Copy Bundle Resources" phase from "fishingIQ" target */,
 			);
 			path = fishingIQ;
 			sourceTree = "<group>";
