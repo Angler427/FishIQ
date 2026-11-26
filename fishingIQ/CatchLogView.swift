@@ -305,7 +305,7 @@ struct AddCatchView: View {
     @State private var photoData: Data?
     @State private var originalPhoto: UIImage?
     @State private var showingPhotoEditor = false
-    @StateObject private var locationProvider = CatchLocationProvider()
+    @StateObject private var locationProvider = LocationManager(accuracy: kCLLocationAccuracyBest)
     @State private var waterbodySuggestions: [CatchWaterbodySuggestion] = []
     @State private var selectedWaterbodyID: String?
     @State private var selectedWaterbodyName: String?

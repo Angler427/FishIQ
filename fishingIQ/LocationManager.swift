@@ -12,10 +12,12 @@ final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelega
     @Published var errorMessage: String?
     @Published var isLoading = false
 
-    override init() {
+    /// Weather and forecasts only need a rough position, so the default is
+    /// kilometer accuracy. Logging a catch asks for `kCLLocationAccuracyBest`.
+    init(accuracy: CLLocationAccuracy = kCLLocationAccuracyKilometer) {
         super.init()
         manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyKilometer
+        manager.desiredAccuracy = accuracy
     }
 
     func requestLocation() {
