@@ -27,14 +27,10 @@ struct FishIQMapView: UIViewRepresentable {
         mapView.showsAttributionButton = true
         mapView.showsLogoView = true
 
-        mapView.setCenter(
-            region.center,
-            zoomLevel: Self.zoomLevel(
-                for: region,
-                mapWidth: mapView.bounds.width
-            ),
-            animated: false
-        )
+        // The map has no size yet, so a zoom level can't be worked out from the
+        // region here. Center it now; the coordinator applies the full region
+        // once the map has loaded and been laid out.
+        mapView.setCenter(region.center, animated: false)
 
         syncAnnotations(on: mapView, coordinator: context.coordinator)
 
@@ -50,7 +46,8 @@ struct FishIQMapView: UIViewRepresentable {
             mapView.styleURL = requestedStyleURL
         }
 
-        if Self.regionNeedsUpdate(mapView, target: region) {
+        if context.coordinator.hasAppliedInitialRegion,
+           Self.regionNeedsUpdate(mapView, target: region) {
             mapView.setCenter(
                 region.center,
                 zoomLevel: Self.zoomLevel(
@@ -70,7 +67,7 @@ struct FishIQMapView: UIViewRepresentable {
     ) {
         let wantedIDs = Set(annotations.map(\.id))
 
-        let existing = mapView.annotations.compactMap {
+        let existing = (mapView.annotations ?? []).compactMap {
             $0 as? MLNPointAnnotation
         }
 
@@ -111,7 +108,10 @@ struct FishIQMapView: UIViewRepresentable {
         let width = max(Double(mapWidth), 1)
         let longitudeSpan = max(region.span.longitudeDelta, 0.000001)
 
-        let zoom = log2((360.0 * width / 256.0) / longitudeSpan)
+        // MapLibre zoom levels are based on 512-point tiles (the world is
+        // 512 * 2^zoom points wide). Using 256 here put every update one
+        // zoom level too deep, so each region round trip zoomed the map in.
+        let zoom = log2((360.0 * width / 512.0) / longitudeSpan)
 
         return min(max(zoom, 1), 20)
     }
@@ -133,6 +133,11 @@ struct FishIQMapView: UIViewRepresentable {
 
         var annotationIDs: [ObjectIdentifier: String] = [:]
         var pinsByID: [String: LakeMapPin] = [:]
+
+        /// False until the map has a real size and the starting region has
+        /// been applied. Until then, region changes from the map are ignored
+        /// so the zoomed-out default camera isn't written back to the binding.
+        private(set) var hasAppliedInitialRegion = false
 
         init(parent: FishIQMapView) {
             self.parent = parent
@@ -193,10 +198,26 @@ struct FishIQMapView: UIViewRepresentable {
             true
         }
 
+        func mapViewDidFinishLoadingMap(_ mapView: MLNMapView) {
+            guard !hasAppliedInitialRegion, mapView.bounds.width > 0 else { return }
+
+            mapView.setCenter(
+                parent.region.center,
+                zoomLevel: FishIQMapView.zoomLevel(
+                    for: parent.region,
+                    mapWidth: mapView.bounds.width
+                ),
+                animated: false
+            )
+            hasAppliedInitialRegion = true
+        }
+
         func mapView(
             _ mapView: MLNMapView,
             regionDidChangeAnimated animated: Bool
         ) {
+            guard hasAppliedInitialRegion else { return }
+
             let bounds = mapView.visibleCoordinateBounds
 
             let latitudeDelta = abs(
