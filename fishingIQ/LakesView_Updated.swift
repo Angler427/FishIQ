@@ -4,6 +4,8 @@ import MapKit
 
 struct LakesView: View {
 
+    @Environment(\.dismiss) private var dismiss
+
     // MARK: - Search
 
     @State private var searchText = ""
@@ -134,9 +136,25 @@ struct LakesView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .shadow(radius: 5)
 
-                // MARK: Map Style Selector
+                // MARK: Close Button and Map Style Selector
 
                 HStack {
+                    // The map takes every drag gesture, so swiping the sheet
+                    // down doesn't close it. This button is the way out.
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .font(.body.weight(.semibold))
+                            .foregroundStyle(Color.fishText)
+                            .frame(width: 44, height: 44)
+                            .background(Color.fishCard)
+                            .clipShape(Circle())
+                            .shadow(radius: 4)
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Close")
+
                     Spacer()
 
                     HStack(spacing: 4) {
