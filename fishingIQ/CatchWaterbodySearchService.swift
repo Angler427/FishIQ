@@ -40,8 +40,11 @@ enum CatchWaterbodySearchService {
     }
 
     static func nearby(to location: CLLocation) async throws -> [CatchWaterbodySuggestion] {
+        // Results are sorted by name, and unnamed waterbodies sort first. Without
+        // this filter the first 100 results were all unnamed ponds, which the
+        // suggestion list drops, so nearby suggestions were always empty.
         let features = try await fetch(
-            whereClause: supportedTypes,
+            whereClause: "\(supportedTypes) AND gnisidlabel IS NOT NULL",
             location: location,
             limit: 100
         )

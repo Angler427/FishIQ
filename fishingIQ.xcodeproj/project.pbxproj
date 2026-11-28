@@ -19,28 +19,16 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
-				MapTilerConfig.swift,
 			);
 			target = 000000000000000100000000 /* fishingIQ */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		5E25254D30ACCE93004B48C5 /* Exceptions for "fishingIQ" folder in "Copy Bundle Resources" phase from "fishingIQ" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 000000000000000140000000 /* Resources */;
-			membershipExceptions = (
-				MapTilerConfig.swift,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		000000000000000000000010 /* fishingIQ */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				5E768B0A309A843E00E5729E /* Exceptions for "fishingIQ" folder in "fishingIQ" target */,
-				5E25254D30ACCE93004B48C5 /* Exceptions for "fishingIQ" folder in "Copy Bundle Resources" phase from "fishingIQ" target */,
 			);
 			path = fishingIQ;
 			sourceTree = "<group>";
@@ -205,7 +193,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -269,7 +257,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.6;
 				MTL_ENABLE_DEBUG_INFO = NO;

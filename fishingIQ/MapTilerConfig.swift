@@ -1,10 +1,10 @@
-
 import Foundation
 
 enum MapTilerConfig {
 
-    // Paste your MapTiler key between the quotes.
-    static let apiKey = "2hwY20nnpK0d3pIN7NH3"
+    // The key lives in Secrets.swift, which is git-ignored.
+    // Copy Config/Secrets.swift.example to fishingIQ/Secrets.swift and paste your key there.
+    static let apiKey = Secrets.mapTilerAPIKey
 
     enum Style: String {
         case outdoor = "outdoor-v4"
@@ -23,6 +23,3 @@ enum MapTilerConfig {
         return components.url!
     }
 }
-
-Key	Description	Action
-2hwY20nnpK0d3pIN7NH3

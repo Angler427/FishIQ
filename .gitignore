@@ -2,3 +2,6 @@
 DerivedData/
 build/
 xcuserdata/
+
+# Local secrets (see Config/Secrets.swift.example)
+fishingIQ/Secrets.swift
